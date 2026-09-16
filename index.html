@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeatherGPT</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">☁ <span>WeatherGPT</span></div>
+  <nav>
+    <button class="nav active" data-section="dashboard">⌂ <span>Dashboard</span></button>
+    <button class="nav" data-section="forecast">▦ <span>Forecast</span></button>
+    <button class="nav" data-section="alerts">⚠ <span>Alerts</span></button>
+    <button class="nav" data-section="chat">✦ <span>AI Assistant</span></button>
+  </nav>
+  <div class="side-bottom"><button class="nav" id="loginBtn">⇥ <span>Login</span></button><small>Conversational weather intelligence</small></div>
+</aside>
+
+<main>
+<header>
+  <div><p class="eyebrow">SMART WEATHER ASSISTANT</p><h1 id="greeting">Good afternoon 👋</h1></div>
+  <div class="actions"><select id="language"><option value="en">English</option><option value="hi">हिन्दी</option></select></div>
+</header>
+
+<div class="search-row">
+  <div class="search"><span>⌕</span><input id="cityInput" placeholder="Search a city e.g. Bhopal, Delhi, Mumbai"><button id="searchBtn">Search</button></div>
+  <b id="locationLabel">Bhopal</b>
+</div>
+
+<section id="dashboard" class="section active">
+  <div class="hero">
+    <div><p>CURRENT WEATHER</p><h2 id="condition">Loading...</h2><div class="temp"><span id="temperature">--</span><sup>°C</sup></div><p>Feels like <b id="feelsLike">--</b>°C</p></div>
+    <div id="weatherSymbol" class="symbol">☀️</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">💧 <div><small>Humidity</small><strong id="humidity">--%</strong></div></div>
+    <div class="stat">💨 <div><small>Wind</small><strong id="wind">-- km/h</strong></div></div>
+    <div class="stat">🌧️ <div><small>Rain chance</small><strong id="rainChance">--%</strong></div></div>
+    <div class="stat">🌡️ <div><small>Pressure</small><strong id="pressure">-- hPa</strong></div></div>
+  </div>
+
+  <div class="heading"><div><p class="eyebrow">NEXT 7 DAYS</p><h2>Forecast</h2></div><button class="link" data-go="forecast">View full forecast →</button></div>
+  <div id="forecastPreview" class="forecast"></div>
+
+  <div class="heading"><div><p class="eyebrow">WEATHERGPT</p><h2>Ask about the weather</h2></div></div>
+  <div class="chat">
+    <div id="chatMessages" class="messages"><div class="bot">Hi! Ask me anything about the weather in <b id="chatLocation">Bhopal</b>. 🌤️</div></div>
+    <div class="chat-input"><input id="chatInput" placeholder="e.g. Will it rain tomorrow?"><button id="sendChat">Send ✦</button></div>
+  </div>
+</section>
+
+<section id="forecast" class="section">
+  <div class="heading"><div><p class="eyebrow">EXTENDED OUTLOOK</p><h2>7-day forecast</h2></div></div>
+  <div id="forecastFull" class="forecast-full"></div>
+</section>
+
+<section id="alerts" class="section">
+  <div class="heading"><div><p class="eyebrow">SAFETY FIRST</p><h2>Weather alerts</h2></div></div>
+  <div id="alertsList" class="alerts"></div>
+</section>
+
+<section id="chat" class="section">
+  <div class="heading"><div><p class="eyebrow">CONVERSATIONAL AI</p><h2>WeatherGPT Assistant</h2></div></div>
+  <div class="chat big"><div id="fullChatMessages" class="messages"><div class="bot">I'm ready. Ask me about forecasts, rain, temperature, wind, or weather safety. 🤖</div></div>
+  <div class="chat-input"><input id="fullChatInput" placeholder="Ask WeatherGPT..."><button id="fullSendChat">Send ✦</button></div></div>
+</section>
+
+<footer>WeatherGPT • Weather data by Open-Meteo • AI by Gemini</footer>
+</main>
+</div>
+
+<div id="loginModal" class="modal hidden"><div class="modal-card"><button id="closeModal" class="close">×</button>
+<p class="eyebrow">WEATHERGPT ACCOUNT</p><h2 id="authTitle">Login</h2>
+<input id="authName" class="form hidden" placeholder="Name"><input id="authEmail" class="form" type="email" placeholder="Email"><input id="authPassword" class="form" type="password" placeholder="Password">
+<button id="authSubmit" class="primary">Login</button><p id="authMessage"></p><button id="switchAuth" class="link">New here? Create an account</button>
+</div></div>
+<script src="script.js"></script>
+</body>
+</html>
